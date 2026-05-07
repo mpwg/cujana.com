@@ -16,6 +16,20 @@ Es gibt keinen Build-Schritt, keine Node-Abhängigkeiten im Repository und keine
 - Preview deployments: alle Branches
 - Production deployments: automatisch bei Push auf `main`
 
+## Aktueller Cloudflare-Status
+
+Stand: 2026-05-07.
+
+- Pages-Projekt `cujana-com` ist erstellt.
+- GitHub-Integration ist mit `mpwg/cujana.com` verbunden.
+- Production Branch ist `main`.
+- Production Deployments bei Push auf `main` sind aktiv.
+- Preview Deployments für Branches sind aktiv.
+- Erstes Production Deployment wurde durch Commit `b1e73ef` ausgelöst und erfolgreich deployt.
+- Öffentliche Pages-URL: `https://cujana-com.pages.dev/`
+- Custom Domain `cujana.com` ist im Pages-Projekt hinzugefügt.
+- Domainstatus ist noch `pending`, solange der Apex-CNAME nicht gesetzt ist.
+
 Die versionierte Pages-Konfiguration liegt in [`../wrangler.jsonc`](../wrangler.jsonc):
 
 ```jsonc
@@ -73,6 +87,11 @@ Proxy status: Proxied
 ```
 
 HTTPS wird von Cloudflare Pages nach erfolgreicher Domain-Validierung automatisch bereitgestellt.
+
+Falls Cloudflare Pages für `cujana.com` den Status `pending` mit `CNAME record not set` zeigt, fehlt
+genau dieser DNS-Eintrag oder er zeigt noch auf ein anderes Ziel. Der API-Zugang, der das Pages-Projekt
+angelegt hat, hatte keine DNS-Record-Berechtigung; der DNS-Eintrag muss daher entweder im Cloudflare
+Dashboard gesetzt werden oder mit einem API-Token, der `DNS:Edit` für die Zone `cujana.com` besitzt.
 
 ## Kein Direct Upload
 
